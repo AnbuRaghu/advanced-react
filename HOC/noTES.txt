@@ -1,0 +1,18 @@
+Higher ordercomponents
+---------------------------
+ component that returns another componet instead of directly return jsx
+
+
+// normal components
+ componet ---> <div> JSX CODE ...</div>
+
+ // Hoc
+  HOC ----> component ----> JSX CODE ...</div>
+
+
+in other wors HOC are just functions that return components
+
+
+HOC main Goal
+---------------
+improve existing comüponents without modifying their code
