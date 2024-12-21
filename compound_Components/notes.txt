@@ -1,0 +1,3 @@
+compound components---
+----------------------------------------------------------------
+breaking a components into several sub components

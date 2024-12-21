@@ -1,0 +1,56 @@
+Functional Programming Use-cases
+-----------------------------------
+1.Controlled Components
+2.Higher Order Components
+3.Functional Components
+4.Recursive Components
+5.Partial Components
+6.Composition
+
+
+// recursive pattern / compponent 
+it's a component that calls itself from inside itself its body like below shown  but every recursive component needs a stopping condition means that there is a condiiton if that condition is met, the recursive component in that case is nor going to call itseld for this case
+
+here it loop throught the nested object and return the lis const myNestedObject = {
+  key1: "value1",
+  key2: {
+    innerKey1: "innerValue1",
+    innerKey2: {
+      innerInnerKey1: "innerInnerValue1",
+      innerInnerKey2: "innerInnerValue2",
+    },
+  },
+  key3: "value3",
+  key: {
+    innerKey1: "innerValue1",
+    innerKey2: {
+      innerInnerKey1: "innerInnerValue1",
+      innerInnerKey2: "innerInnerValue2",
+    },
+  },
+};
+
+const isValidObj = (data) => typeof data === "object" && data !== null;
+
+export const Recursive = ({ data }) => {
+  if (!isValidObj(data)) {
+    return <li>{data}</li>;
+  }
+
+  const pairs = Object.entries(data);
+  console.log(data);
+  return (
+    <>
+      {pairs.map(([key, value]) => {
+        return (
+          <li>
+            {key}:
+            <ul>
+              <Recursive data={value} />
+            </ul>
+          </li>
+        );
+      })}
+    </>
+  );
+};

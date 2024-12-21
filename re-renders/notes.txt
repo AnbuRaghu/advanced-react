@@ -1,0 +1,5 @@
+react re-renders
+-------------
+
+react components are re- rendered only if the state in the components are changing not if the prop of the component changes
+exception: if a component pack with reac.memo then it re-renders if the props of the component changes

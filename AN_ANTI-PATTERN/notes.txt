@@ -1,0 +1,18 @@
+note
+------
+why should you avoid creating components inside other compopnents?? why is this parctice is known as an anti-pattern???
+
+const App =() => {
+    const Input = () => <input/> // input is defined inside App comppnent 
+    return <Input/>>
+
+};
+
+
+// what the app component look like in react 
+{
+ type:Input
+    
+ }
+
+ Answer: creating components within other components in this way can significanly reduce performancr of your react app
