@@ -1,0 +1,39 @@
+forwardRef
+----------------------------------------------------------------
+
+Why Use forwardRef?
+In React, props are typically the way to pass data to child components. However, ref is not treated as a regular prop and cannot be accessed by default within the child component. forwardRef solves this problem by explicitly forwarding the ref to a specific element or component.
+
+
+How forwardRef Works?
+-------------------------
+Without forwardRef: If you try to pass a ref to a child component that doesn’t handle it, the ref will not be forwarded to the DOM element or component.
+
+
+the forward ref is just a wrapper around our component that allows us to receive props and ref
+
+forward ref accepts props and ref as arguments
+
+
+const CustomInput = forwardRef((props, ref) => {
+  return <input ref={ref} {...props} />;
+});
+
+
+function App() {
+  const inputRef = useRef();
+
+  const focusInput = () => {
+    // Directly access the DOM node of the input
+    inputRef.current.focus();
+  };
+
+  return (
+    <div>
+      <CustomInput ref={inputRef} placeholder="Type something here..." />
+      <button onClick={focusInput}>Focus the input</button>
+    </div>
+  );
+}
+
+export default App;

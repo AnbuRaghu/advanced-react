@@ -1,0 +1,33 @@
+typical use cases for using Refs in React-----------------
+--------------------------------------------
+* focusing an elememt 
+* detecting outside clicks
+* scrlling to an elememt*estimating boundaries of elements
+
+what is Refs-
+--------------
+a ref in react is just a mutable object that is maintained across rerenders
+
+
+difference between ref and state 
+--------------------------------------------
+
+Here’s a clear comparison between **ref** and **state** in React:
+
+---
+
+### **Key Differences**
+
+| **Feature**               | **State**                                                                                                   | **Ref**                                                                                     |
+|---------------------------|-----------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------|
+| **Purpose**               | Manages data that affects the rendering of a component.                                                   | Holds a reference to a DOM element or mutable data that persists across renders.          |
+| **Triggers Re-Renders**   | Yes, changing state triggers a re-render of the component.                                                | No, updating a ref does **not** trigger a re-render.                                      |
+| **Persistence Across Renders** | Yes, state persists across renders.                                                                   | Yes, refs also persist across renders.                                                   |
+| **Mutability**            | State is immutable and updated using `setState` (class components) or `useState`.                         | Ref is mutable and updated directly via `ref.current`.                                    |
+| **Use Cases**             | - Storing UI-related data (e.g., form input values, visibility toggles). <br>- Reactively updating the UI. | - Directly accessing/manipulating DOM elements.<br>- Storing mutable data without re-renders. |
+| **Declarative vs Imperative** | Encourages a declarative approach (React updates the UI automatically based on state changes).          | Often used for imperative actions, like interacting directly with the DOM.               |
+| **Impact on Lifecycle Methods** | Changes to state trigger lifecycle methods like `render` or `useEffect`.                             | Ref updates do not trigger lifecycle methods.                                             |
+| **Managed by React**      | React fully manages and observes state changes.                                                           | React does not observe ref changes; it's entirely under the developer's control.          |
+
+---
+

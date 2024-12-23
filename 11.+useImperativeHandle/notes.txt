@@ -1,0 +1,31 @@
+use imperativehandler
+-----------------------
+
+as we know react is declarative and it expects us to develop and create our react compomnents in a declarative manner but sometimes we need to trigger something imperatively react gives us a hook useImperativehandle
+ it receive as 1st argument as original object and for 2nd argument it receives a function that returns another object that we want to attach to the first one which means to the original ref..
+
+
+ useImperativeHandle is a React hook that is used in combination with forwardRef to customize the instance value that is exposed when using a ref. In simpler terms, it allows you to define a custom API or set of methods that can be called on the child component by its parent.
+
+Why Use useImperativeHandle?
+By default, when you pass a ref to a component, it gives access to the DOM element or the instance of the component. However, sometimes you may want to control what the parent can access. For example:
+
+You might want to expose specific methods (focus, clear, etc.) instead of the entire DOM node.
+You might want to encapsulate certain logic within the child component but still allow the parent to trigger it.
+
+
+
+const CustomInput = forwardRef((props, ref) => {
+  const inputRef = useRef();
+
+  useImperativeHandle(ref, () => ({
+    focus: () => {
+      inputRef.current.focus();
+    },
+    clear: () => {
+      inputRef.current.value = '';
+    },
+  }));
+
+  return <input ref={inputRef} {...props} />;
+});

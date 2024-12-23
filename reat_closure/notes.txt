@@ -1,0 +1,66 @@
+
+closure 
+------------
+every single function inside component is  closure
+e.g:
+
+const Component = () => {
+    const [state,setState] = useState()
+
+
+    const onClick = () => {
+        // this is a closure
+    }
+
+
+    useEffect (() =>{
+
+           // this is a closure
+
+    } ,[])
+}
+
+
+
+
+
+react memo accepts 2nd arguments which is 
+basically comparison like below i is before the 2nd one is after
+
+const MemoizedEC = React.memo(ExpensiveComponent, (before, after) => {
+    // if it's treu it's memoised.. here we check the component prop in thiscase btnLabel 
+  return before.btnLabel === after.btnLabel;
+});
+
+
+-----------------------------------------------------
+const MemoizedEC = React.memo(ExpensiveComponent, (before, after) => {
+  return before.btnLabel === after.btnLabel;
+});
+
+export default function App() {
+  const [value, setValue] = useState<string>();
+ console.log(value)  // here we get the value 
+  const clickHandler = () => {
+    // submit stuff to the backend
+    console.log(value); // but here we get undefined.. this is bevcause of closure... to solve this we habve to pack this function with  usecallback
+  };
+
+
+  // it shouold be like this 
+    const clickHandler = useCallback(() => {
+    console.log(value);
+  }, [value]);
+
+
+  return (
+    <>
+      <input
+        type="text"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+      />
+      <MemoizedEC btnLabel="click me!" onClick={clickHandler} />
+    </>
+  );
+}
